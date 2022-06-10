@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp</title>
+</head>
+<body bgcolor="#ffe4c4">
+<div align="center" style="position: sticky; background-color: red;font-size: 120px">Chatting Web Page</div>
+
+<form action="{% url 'checklet' %}" method="post">
+    {% csrf_token %}
+<br>
+    <h2 align="center" style="color: blue">Sign Up</h2>
+
+     <table align="center">
+         <tr>
+            <td width="250">Name</td>
+            <td>{{ snames }}</td>
+        </tr>
+        <tr>
+            <td>Mail</td>
+            <td>{{ smail }}</td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td>{{ sphone }}</td>
+        </tr>
+        <tr>
+            <td>Id Number<h1 style="font-size: 10px;color: red">(Don't change the Value)</h1> </td>
+            <td><label><input type="text" name="id11" value={{ id }} ></label></td>
+        </tr>
+
+         <tr>
+            <td width="150" >Enter User Id   </td>
+            <td><label><input type="text"  name="susername" required></label><br></td>
+        </tr>
+        <tr>
+            <td>Enter Your Password  </td>
+            <td><label><input type="password"  name="password" placeholder="********" required></label></td>
+        </tr>
+
+         <tr>
+            <td height="40" align="center">
+        <label><input type="submit" name="Submit" value="Submit" onclick="alert('Check the Details and conform')"> </label></td>
+        <td align="center"><label><input type="reset" name="reset" onclick="alert('Are You will You to Reset')"> </label></td>
+         </tr>
+
+        <tr>
+            <td colspan="2" height="50" align="right"><h3 align="center">
+        To Continue with <a href="login.html">Login</a> </h3> </td>
+        </tr>
+
+    </table>
+     <h3 style="color: red" align="center"> {{ errorusr }}</h3>
+</form>
+</body>
+</html>

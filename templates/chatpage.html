@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Web Site</title>
+</head>
+<body bgcolor="#add8e6">
+<form action="{% url 'checkchat' %}" method="post">
+{% csrf_token %}
+
+<div align="center" style="position: sticky; background-color: red;font-size:120px;width: 100%">Chatting Web Page</div>
+
+    <div align="center" style="font-size:xx-large">Login Page</div>
+<div align="right" style="right: auto;font-size: 20px;">Name:- {{ usernamess }}<br> <div style="color: red">Your-Id:- {{ useridss }}</div></div>
+<input type="hidden" name="userid" value={{ useridss }}>
+<br>
+
+<div align="center"> <div  style="position: absolute;top: 35%;left: 10px; background-color: bisque;border: 2px solid greenyellow;overflow: auto;width: 70%;height: 450px">
+
+<div style="position:absolute;top:10%;left:10%;transform: rotate(335deg);opacity: 0.3;font-size:90px" ><br>Chatting Web Page</div>
+
+</div></div>
+<div align="right"><div style=" position:absolute;top:40%;right:16px;
+  border: 2px solid greenyellow;background: lightgrey;overflow: auto ; width: 25%;height:400px">
+    {% for j in listss %}
+        <input  align="center" style="width: 100%;padding: 3%;border-color: aquamarine;background-color: lightgrey;font-size: 25px"  type="submit" name="recevier2" value={{ j }}><br>
+    {% endfor %}
+</div> </div>
+
+<div style="position: absolute;top:35%;left:80%">
+    <label>
+        <select name="recevier1">
+
+            <option value="none" selected>Select your Friend</option>
+            {% for i in alla %}
+                {% if  i.User_id != useridss %}
+                    <option value={{ i.User_id }}>{{ i.User_id }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <input type="submit" value="Start Chat" onclick="alert('This Id is New For You Are Willing to Continue ')" onsubmit="{% url 'checkchat'  %}">
+    </label>
+
+</div>
+</form>
+<form><div align="center" style=" position:absolute;top:96%;right: 50%"> <label><input type="button"  value="Logout" onclick="alert('Are you Willing You to Logout');window.location.href='login.html'"> </label></div></form>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp</title>
+</head>
+<body bgcolor="#ffe4c4">
+<div align="center" style="position: sticky; background-color: red;font-size: 120px">Chatting Web Page</div>
+
+<form action="{% url 'check' %}" method="post">
+    {% csrf_token %}
+<br>
+     <table align="center">
+         <tr>
+            <td width="100">Name</td>
+            <td><label><input type="text"  name="sname" placeholder="Enter Your Name" required ></label><br></td>
+        </tr>
+        <tr>
+            <td>E-Mail</td>
+            <td><label><input type="email"  name="smail" placeholder="...@gmail.com" required ></label></td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td><label><input type="tel"  name="sphone" placeholder="+91xxxxxxxxxx" required></label></td>
+
+        </tr>
+
+         <tr>
+            <td height="40" align="center">
+        <button type="submit" onclick="alert('Conform the Submit')">Submit</button> </td>
+             <td height="40" align="center">
+        <button type="reset" onclick="alert('Conform the Reset')">Reset</button> </td>
+
+         </tr>
+
+        <tr>
+            <td colspan="2" height="50" align="right"><h3 align="center">
+        To Continue with <a href="login.html">Login</a> </h3> </td>
+        </tr>
+
+
+    </table>
+
+</form>
+<h3 align="center" style="color: blue">{{ error1 }}</h3>
+</body>
+</html>

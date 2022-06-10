@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LoginPage</title>
+</head>
+<body bgcolor="#ffe4c4">
+<div align="center" style="position: sticky; background-color: red;font-size: 120px">Chatting Web Page</div>
+
+<form action="{% url 'checklogin' %}" method="post" style="align-content: center">
+    {% csrf_token %}
+    <h1 align="center">Login Page</h1>
+    <table align="center">
+       <tr>
+            <td width="150">Enter Your Id    </td>
+            <td><label><input type="text"  name="mail_id" placeholder=" User Id" id="mail_id" ></label><br></td>
+        </tr>
+        <tr>
+            <td>Enter Your Password   </td>
+            <td><label><input type="password"  name="password" placeholder="********" id="password" ></label></td>
+        </tr>
+        <tr>
+            <td height="40" align="center">
+        <button type="submit" onclick="alert('Conform the Submit')">Submit</button> </td>
+             <td height="40" align="center">
+        <button type="reset" onclick="alert('Conform the Reset')">Reset</button> </td>
+
+         </tr>
+
+        <tr>
+            <td colspan="2" height="40" align="right"><h3>For <a href="signup.html">Sign  up</a></h3> </td>
+        </tr>
+    </table>
+
+
+    <h2 style="color: blueviolet" align="center"> {{ error1 }}</h2>
+    <h2 style="color: blueviolet" align="center"> {{ pp }}</h2>
+    <h2 style="color: blueviolet" align="center"> {{ log }}</h2>
+</form>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" http-equiv="refresh" content="10;{% url 'reloadss' useridss reciever %}">
+    <title>Chat Web Site</title>
+
+</head>
+<body bgcolor="#add8e6">
+<form action="{% url 'checkchat' %}" method="post" >
+{% csrf_token %}
+
+<div align="center" style="position: sticky; background-color: red;font-size:120px;width: 100%">Chatting Web Page</div>
+
+    <div align="center" style="font-size:xx-large">Login Page</div>
+<div align="right" style="right: auto;font-size: 20px;">Name:- {{ usernamess }}<br> <div style="color: red">Your-Id:- {{ useridss }}</div></div>
+<input type="hidden" name="userid" value={{ useridss }}>
+<input type="hidden" name="recevier2" value={{ reciever }}>
+
+
+<div align="center"> <div  style="position: absolute;top: 28%;left: 10px; background-color: bisque;border: 2px solid greenyellow;overflow: auto;width: 70%;height: 450px">
+
+<div style="position:absolute;top:10%;left:10%;transform: rotate(335deg);opacity: 0.3;font-size:90px" ><br>Chatting Web Page</div>
+<h3 style=" position:relative;top:-4%;background-color: red;color: lightcyan;width: 100%;">You are Chatting with {{ reciever }}</h3>
+<table border="0" style="position:absolute;top: 8%;left:15%">
+    {% for l in chatttes %}
+        {% if l.Sender_id == useridss and l.Recever_id == reciever %}
+                <tr bgcolor="#e9967a" style="opacity: 0.6">
+                <td align="right" style="opacity:100%;color:blue;height: 35px;width: 75%"><b style="font-size: 20px">{{ l.Message }}</b></td>
+                <td  style="opacity:100%;color: black;width: 175px;">{{ l.timeanddate}}</td>
+                </tr>
+        {% elif l.Sender_id == reciever and l.Recever_id == useridss %}
+                <tr bgcolor="#00ffff" style="opacity: 0.6">
+                    <td align="left" style="opacity:100%;color: black;height:35px;"><b style="font-size: 20px">{{ l.Message }}</b></td>
+
+                    <td style="opacity: 100%;color: black;width: 175px">{{l.timeanddate }}</td>
+
+                </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+
+
+</div></div>
+<div align="right"><div style=" position:absolute;top:35%;right:16px;
+  border: 2px solid greenyellow;background: lightgrey;overflow: auto ; width: 25%;height:400px">
+    {% for j in listss %}
+        <input  align="center" style="width: 100%;padding: 3%;border-color: aquamarine;background-color: lightgrey;font-size: 25px"  type="submit" name="recevier2" value={{ j }}><br>
+    {% endfor %}
+</div> </div>
+
+
+
+<div style="position: absolute;top:31%;left:80%">
+    <label>
+        <select name="recevier1">
+
+            <option value="none" selected>Select your Friend</option>
+            {% for i in alla %}
+                {% if  i.User_id != useridss %}
+                    <option value={{ i.User_id }}>{{ i.User_id }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <input type="submit" value="Start Chat" onclick="alert('This Id is New For You Are Willing to Continue ')" onsubmit="{% url 'checkchat'  %}">
+    </label>
+
+</div>
+</form>
+<form action="{% url 'chatsend' %}" method='post'>
+    {% csrf_token %}
+    <input type="hidden" name="userid" value={{ useridss }}>
+    <input type="hidden" name="recevier2" value={{ reciever }}>
+
+    <div style="position: absolute;top: 90%;left:50px">
+        <label>
+            <textarea name="message"   style=" width:800px ;height:30px;" value={{ space }}></textarea>
+            <input type="submit" style="position:relative;top: -15px;width: 60px;height: 25px;margin: 4px 2px;cursor: pointer;border-radius:50%;text-align:center;" value="Send">
+        </label>
+    </div>
+</form>
+<form action="{% url 'loginss' %}" method="post">
+
+    {% csrf_token %}
+<div align="center" style=" position:absolute;top:96%;right: 50%"> <label><input type="submit"  value="Logout" onclick="alert('Are you Willing You to Logout')"> </label></div></form>
+</body>
+</html>
